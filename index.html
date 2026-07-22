@@ -1,236 +1,449 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BirdCull - Desktop Photo Culling Software</title>
+  <meta name="description" content="BirdCull is desktop photo culling software for bird photographers. Try the app, review product details, and buy a full license through Paddle checkout.">
+  <link rel="canonical" href="https://lyx997.github.io/">
+  <link rel="icon" href="/BirdCull/assets/birdcull_app.png">
+  <style>
+    :root {
+      --ink: #172026;
+      --muted: #58656f;
+      --line: #d8e1e8;
+      --paper: #f7faf9;
+      --panel: #ffffff;
+      --green: #1f7a5a;
+      --green-dark: #145d45;
+      --blue: #235b8e;
+      --amber: #a25f10;
+      --shadow: 0 18px 50px rgba(23, 32, 38, 0.12);
+    }
 
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+    * {
+      box-sizing: border-box;
+    }
 
-<meta name="generator" content="Hexo 4.2.1"></head>
+    html {
+      scroll-behavior: smooth;
+    }
 
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--blue);
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(216, 225, 232, 0.9);
+      background: rgba(247, 250, 249, 0.94);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      display: flex;
+      min-height: 68px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--ink);
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--green);
+      border-radius: 8px;
+      padding: 0 18px;
+      background: var(--green);
+      color: #fff;
+      font-weight: 720;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 10px 24px rgba(31, 122, 90, 0.2);
+    }
+
+    .button:hover {
+      background: var(--green-dark);
+      color: #fff;
+    }
+
+    .button.secondary {
+      border-color: var(--line);
+      background: #fff;
+      color: var(--ink);
+      box-shadow: none;
+    }
+
+    .button.secondary:hover {
+      border-color: var(--green);
+      background: #eef7f2;
+      color: var(--green-dark);
+    }
+
+    .hero {
+      padding: 72px 0 52px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(31, 122, 90, 0.1), rgba(35, 91, 142, 0.08)),
+        var(--paper);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(340px, 0.85fr) minmax(420px, 1.15fr);
+      gap: 38px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--green-dark);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 720px;
+      font-size: clamp(2.5rem, 5.8vw, 5.4rem);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.75rem, 3vw, 2.45rem);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 680px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 1.15rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .product-shot {
+      overflow: hidden;
+      border: 1px solid rgba(216, 225, 232, 0.95);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      margin: 0;
+    }
+
+    .product-shot img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .trust {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 30px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .trust span {
+      border-left: 3px solid var(--green);
+      padding-left: 10px;
+    }
+
+    section {
+      padding: 62px 0;
+    }
+
+    .section-head {
+      display: flex;
+      max-width: 840px;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .section-head p,
+    .muted,
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+      background: var(--panel);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+    }
+
+    .card p {
+      margin: 0;
+    }
+
+    .card ul {
+      margin: 12px 0 0;
+      padding-left: 20px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(300px, 0.55fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .pricing {
+      border: 1px solid rgba(31, 122, 90, 0.35);
+      border-radius: 8px;
+      padding: 28px;
+      background: #fff;
+      box-shadow: 0 14px 38px rgba(31, 122, 90, 0.11);
+    }
+
+    .price {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin: 10px 0 12px;
+    }
+
+    .price strong {
+      font-size: 2.4rem;
+      line-height: 1;
+    }
+
+    .notice {
+      border-left: 4px solid var(--amber);
+      padding: 16px 18px;
+      background: #fff7eb;
+      color: #65400e;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 34px 0;
+      color: var(--muted);
+      background: #fff;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    @media (max-width: 860px) {
+      .nav,
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+      }
+
+      .hero-grid,
+      .split,
+      .grid,
+      .trust {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+    }
+  </style>
+</head>
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="/" aria-label="BirdCull home">
+        <img src="/BirdCull/assets/birdcull_app.png" alt="">
+        <span>BirdCull</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#product">Product</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#support">Support</a>
+        <a href="/BirdCull/terms.html">Terms</a>
+        <a class="button" href="/BirdCull/checkout.html">Buy Full License</a>
       </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="product">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Desktop culling software for bird photographers</p>
+          <h1>BirdCull helps find stronger bird photos faster.</h1>
+          <p class="lead">BirdCull is a desktop app for reviewing high-volume bird photography folders. It analyzes burst sequences, ranks stronger shots, and exports folder or XMP rating outputs for editing workflows.</p>
+          <div class="actions">
+            <a class="button" href="/BirdCull/checkout.html">Buy Full License</a>
+            <a class="button secondary" href="https://linblue.top/s/birdcull">Download for Windows</a>
+            <a class="button secondary" href="https://linblue.top/s/birdcull2">Download for Mac</a>
+          </div>
+          <div class="trust" aria-label="Product highlights">
+            <span>Free trial available before purchase</span>
+            <span>Local photo processing with no photo uploads</span>
+            <span>Windows 10/11 and Apple silicon Mac support</span>
+          </div>
+        </div>
+        <figure class="product-shot">
+          <img src="/BirdCull/assets/birdcull_ui.png" alt="BirdCull desktop app interface showing photo culling results">
+        </figure>
       </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-我的第一篇文章" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/23/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" class="article-date">
-  <time datetime="2020-07-23T05:11:02.000Z" itemprop="datePublished">2020-07-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/23/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/">我的第一篇文章</a>
-    </h1>
-  
+    </section>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="123"><a href="#123" class="headerlink" title="123"></a>123</h2><h3 id="2345"><a href="#2345" class="headerlink" title="2345"></a>2345</h3>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/23/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" data-id="ckcyc965p0000iuase5xh2c59" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/23/hello-world/" class="article-date">
-  <time datetime="2020-07-23T05:08:35.764Z" itemprop="datePublished">2020-07-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/23/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/23/hello-world/" data-id="ckcyc7ud300008las7d3q4tk3" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2020/07/23/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/">我的第一篇文章</a>
-          </li>
-        
-          <li>
-            <a href="/2020/07/23/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>What BirdCull does.</h2>
+          <p>BirdCull focuses on practical first-pass review for bird photo sessions: similar burst frames, visible head and eye details, sharpness, pose, and export into familiar editing tools.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>Bird-focused ranking</h3>
+            <p>Scores images around bird photography review signals instead of treating every photo like a generic image.</p>
+          </article>
+          <article class="card">
+            <h3>Workflow output</h3>
+            <p>Creates review folders or XMP star-rating sidecars for Lightroom, Bridge, Photo Mechanic, and similar tools.</p>
+          </article>
+          <article class="card">
+            <h3>Private local processing</h3>
+            <p>Selected photos are processed on your computer. Payment details are handled by Paddle checkout.</p>
+          </article>
+        </div>
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </section>
+
+    <section id="pricing">
+      <div class="wrap split">
+        <div>
+          <div class="section-head">
+            <h2>Clear one-time license pricing.</h2>
+            <p>The installer starts in trial mode. Activating a full license unlocks larger batches without reinstalling the app.</p>
+          </div>
+          <div class="notice">
+            Purchases are processed through Paddle. Real payments require Paddle account verification and approval for this checkout domain.
+          </div>
+        </div>
+        <aside class="pricing">
+          <p class="eyebrow">BirdCull Full License</p>
+          <div class="price">
+            <strong>$49</strong>
+            <span>one-time purchase</span>
+          </div>
+          <p class="muted">Includes full batch processing beyond the trial limit, folder rating output, Star XMP output, and email support for purchase or activation issues.</p>
+          <div class="actions">
+            <a class="button" href="/BirdCull/checkout.html">Continue to Paddle Checkout</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="support">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Support and policy links.</h2>
+          <p>These pages are public and reachable from the approved domain for purchase review and customer reference.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>Contact</h3>
+            <p>Email <a href="mailto:glamecke@gmail.com">glamecke@gmail.com</a> for purchase, activation, compatibility, or privacy questions.</p>
+          </article>
+          <article class="card">
+            <h3>Refund policy</h3>
+            <p>Because BirdCull provides a free trial before purchase, completed digital license purchases are non-refundable. Read the <a href="/BirdCull/refund-policy.html">refund policy</a>.</p>
+          </article>
+          <article class="card">
+            <h3>Legal pages</h3>
+            <p><a href="/BirdCull/terms.html">Terms and Conditions</a><br><a href="/BirdCull/privacy.html">Privacy Policy</a><br><a href="/BirdCull/refund-policy.html">Refund Policy</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>Copyright 2026 BirdCull. All rights reserved.</span>
+      <span><a href="/BirdCull/">Full product page</a> | <a href="/BirdCull/checkout.html">Paddle checkout</a> | <a href="/BirdCull/terms.html">Terms</a> | <a href="/BirdCull/privacy.html">Privacy</a> | <a href="/BirdCull/refund-policy.html">Refund Policy</a></span>
     </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
+  </footer>
 </body>
 </html>
