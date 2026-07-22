@@ -178,6 +178,25 @@
       margin-top: 28px;
     }
 
+    .hero-actions {
+      align-items: stretch;
+      flex-direction: column;
+      max-width: 430px;
+    }
+
+    .download-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .download-actions .button {
+      width: 100%;
+      padding-right: 14px;
+      padding-left: 14px;
+      text-align: center;
+    }
+
     .product-shot {
       overflow: hidden;
       border: 1px solid rgba(216, 225, 232, 0.95);
@@ -323,6 +342,16 @@
       .hero {
         padding-top: 48px;
       }
+
+      .hero-actions {
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .download-actions {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -350,10 +379,12 @@
           <p class="eyebrow">Desktop culling software for bird photographers</p>
           <h1>BirdCull helps find stronger bird photos faster.</h1>
           <p class="lead">BirdCull is a desktop app for reviewing high-volume bird photography folders. It analyzes burst sequences, ranks stronger shots, and exports folder or XMP rating outputs for editing workflows.</p>
-          <div class="actions">
+          <div class="actions hero-actions">
             <a class="button" href="/BirdCull/checkout.html">Buy Full License</a>
-            <a class="button secondary" href="https://linblue.top/s/birdcull">Download for Windows</a>
-            <a class="button secondary" href="https://linblue.top/s/birdcull2">Download for Mac</a>
+            <div class="download-actions">
+              <a class="button secondary" href="https://linblue.top/s/birdcull">Download for Windows</a>
+              <a class="button secondary" href="https://linblue.top/s/birdcull2">Download for Mac</a>
+            </div>
           </div>
           <div class="trust" aria-label="Product highlights">
             <span>Free trial available before purchase</span>
