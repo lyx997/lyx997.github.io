@@ -72,6 +72,22 @@
       text-decoration: none;
     }
 
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-secondary {
+      color: var(--blue);
+      font-size: 0.95rem;
+    }
+
+    .brand-divider {
+      color: var(--line);
+      font-size: 1.4rem;
+    }
+
     .brand img {
       width: 38px;
       height: 38px;
@@ -328,6 +344,10 @@
         flex-direction: column;
       }
 
+      .brand-group {
+        flex-wrap: wrap;
+      }
+
       .nav-links {
         flex-wrap: wrap;
       }
@@ -358,10 +378,17 @@
 <body>
   <header>
     <div class="wrap nav">
-      <a class="brand" href="/" aria-label="BirdCull home">
-        <img src="/BirdCull/assets/birdcull_app.png" alt="">
-        <span>BirdCull</span>
-      </a>
+      <div class="brand-group">
+        <a class="brand" href="/" aria-label="BirdCull home">
+          <img src="/BirdCull/assets/birdcull_app.png" alt="">
+          <span>BirdCull</span>
+        </a>
+        <span class="brand-divider" aria-hidden="true">·</span>
+        <a class="brand brand-secondary" href="/BirdArchive/" aria-label="BirdArchive product page">
+          <img src="/BirdArchive/assets/birdarchive_icon.png" alt="">
+          <span>BirdArchive</span>
+        </a>
+      </div>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="#product">Product</a>
         <a href="/BirdArchive/">BirdArchive</a>
